@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription
+{% endblock %}
+{% block titre %}
+	<div class="titre">
+		<h4>INSCRIPTION</h4>
+	</div>
+{% endblock %}
+{% block body %}
+	{% for message in app.flashes('success') %}
+		<div class="alert alert-success">
+			{{ message }}
+		</div>
+
+	{% endfor %}
+	{% for message in app.flashes('error') %}
+		<div class="alert alert-error">
+			{{ message }}
+		</div>
+
+	{% endfor %}
+	{% block corp %}
+
+		<div>
+			<h1>Inscription</h1>
+			<div class="sub">
+
+				<div class="form">
+					{{ form_start(form) }}
+				</div>
+				<div class="form">
+					<h4 class="mb-3 font-weight-normal">Nom</h4>
+					{{ form_row(form.nom, {'attr': {'class': 'form-control'}}) }}
+				</div>
+
+				<div class="form">
+					<h4 class=" mb-3 font-weight-normal">Prénom</h4>
+
+
+					{{ form_row(form.prenom, {'attr': {'class': 'form-control'}}) }}
+				</div>
+				<div class="form">
+					<h4 class=" mb-3 font-weight-normal">Email</h4>
+
+					{{ form_row(form.email, {'attr': {'class': 'form-control'}}) }}
+				</div>
+				<div class="form">
+					<h4 class=" mb-3 font-weight-normal">Pseudo</h4>
+
+					{{ form_row(form.pseudo, {'attr': {'class': 'form-control'}}) }}
+				</div>
+				<div class="form">
+					<h4 class=" mb-3 font-weight-normal">Catégorie</h4>
+
+					{{ form_row(form.categorie, {'attr': {'class': 'form-control'}}) }}
+				</div>
+				<div class="form">
+					<h4 class=" mb-3 font-weight-normal">Mot de passe</h4>
+
+					{{ form_row(form.password.first, {'attr': {'class': 'form-control'}}) }}
+				</div>
+				<h4 class=" mb-3 font-weight-normal">Confirmation du mot de passe</h4>
+
+				<div class="form">
+					{{ form_row(form.password.second, {'attr': {'class': 'form-control'}}) }}
+				</div>
+
+
+				{{ form_end(form) }}
+
+			</div>
+
+		{% endblock %}
+	{% endblock %}

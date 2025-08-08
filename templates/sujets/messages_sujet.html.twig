@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sujet
+{% endblock %}
+{% block menu %}{% endblock %}
+
+{% block body %}
+	{% block corp %}
+
+
+		{% for message in app.flashes('success') %}
+			<div class="alert alert-success">
+				{{ message }}
+			</div>
+
+		{% endfor %}
+		<div class="sub">
+        	<a href="{{path('app_accueil')}}" ><h4>Retour à l'accueil</h4></a>
+
+    <a href="{{path('app_forum')}}" ><h4>Retour à la liste des sujets</h4></a>
+        		{% for messages in messages %}
+	{% if messages.sujet == sujet.id %}
+
+			<div class="card shadow ">
+				<div class="card-header py-3">
+					<h6 class="m-0 font-weight-bold text-primary">
+						Auteur:
+						{{messages.auteur}}</h6>
+                       {% if app.user.roles[0] == ('ROLE_ADMIN' or 'ROLE_MODERATEUR') %}
+				<button><a href="{{path('app_messages_delete' , { 'id' : messages.id })}}">Supprimer</a></button>
+				<button><a href="{{ path('app_messages_update', { 'id' : messages.id })}}">Modifier</a></button>
+
+                       {% endif %} 
+				</div>
+				<div class="card-body">
+
+					<p class="card-text">{{messages.contenu}}</p>
+					<p class="card-text">date:
+						{{messages.date|date('d-m-Y')}}</p>
+
+				</div>
+			</div>
+			{% endif %}
+            			{% endfor %}
+            
+			<div class="form">
+            <h4>Répondre</h4>
+				{{ form(form) }}
+				</div>
+
+			{% endblock %}
+		{% endblock %}

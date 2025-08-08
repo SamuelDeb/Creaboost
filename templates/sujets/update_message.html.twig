@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification message
+{% endblock %}
+{% block menu %}{% endblock %}
+
+{% block body %}
+	{% block titre %}
+		<div class="titre">
+			<h4>Modification du message</h4>
+		</div>
+	{% endblock %}
+	{% block corp %}
+
+
+		{% for message in app.flashes('success') %}
+			<div class="alert alert-success">
+				{{ message }}
+			</div>
+
+		{% endfor %}
+
+		<div class="sub">
+			<a href="{{path('app_forum')}}">
+				<h4>Retour</h4>
+			</a>
+
+
+			<div class="form">
+				{{ form_start(form) }}
+			</div>
+			<div class="form">
+				<h4 class=" mb-3 font-weight-normal">Contenu</h4>
+
+				{{ form_row(form.contenu, {'attr': {'class': 'form-control'}}) }}
+			</div>
+
+
+			<div class="form">
+				{{ form_row(form.submit, {'attr': {'class': 'form-control'}}) }}
+			</div>
+			{{ form_end(form) }}
+
+		</div>
+	{% endblock %}
+{% endblock %}

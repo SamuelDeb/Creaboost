@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Forum Lycéen
+{% endblock %}
+
+{% block body %}
+	{% block titre %}
+		<div class="titre">
+			<h4>LISTE DES SUJETS LYCEEN</h4>
+		</div>
+	{% endblock %}
+
+	{% block corp %}
+
+		<div class="listeSujet">
+			<a href="{{path('app_accueil')}}">
+				<h4>Retour à l'accueil</h4>
+			</a>
+
+			<a href="{{ path('app_nouveau_sujets') }}">
+					<h4>Nouveau Sujet</h4>
+				</a>
+			<h1>Sujets Lycéen</h1>
+
+			{% for lyceen in lyceen %}
+				{% if lyceen.categorie == "Lycéen" %}
+					<div class="lyceen">
+
+						<div class="card shadow ">
+							<div class="card-header py-3">
+								<h6 class="m-0 font-weight-bold text-primary">
+									titre :
+									{{lyceen.titre}}</h6>
+							</div>
+							<div class="card-body">
+								<h5 class="card-title">reponse:{{lyceen.reponse}}
+								</h5>
+								<p class="card-text">date:
+									{{lyceen.date|date('d-m-Y')}}</p>
+								<a href="{{path('app_afficher_sujets' , { 'id' : lyceen.id })}}">Voir les messages</a>
+							</div>
+						</div>
+					</div>
+				</br>
+			{% endif %}
+		{% endfor %}
+		{# <button>
+			<a href="{{ path('app_nouveau_sujets') }}">Nouveau Sujet</a>
+		</button> #}
+	</div>
+{% endblock %}{% endblock %}

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}CREABOOST
+			{% endblock %}
+		</title>
+		{% block stylesheets %}
+			<link rel="stylesheet" href="{{ asset ('assets/css/style.css')}}">
+			<link href="{{ asset ('assets/css/bootstrap.min.css')}}" rel="stylesheet">
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		{% endblock %}
+		{% block javascripts %}{% endblock %}
+	</head>
+	<body>
+		{% block header %}
+			{% if app.user %}
+				<header>
+					<div class="header">
+						<div class="login_inscription">
+							<ul>
+								<li><a id="logout"href="{{ path('app_logout') }}">Se déconnecter</a></li>
+							</ul>
+
+						</div>
+						<div class="title">
+							<h3>Entraide pour collégien et lycéen : Les Arts-plastiques au top !</h4>
+						</div>
+					</div>
+				</header>
+			{% else %}
+				<header>
+					<div class="header">
+						<div class="login_inscription">
+							<ul>
+								<li><a id="login"href="{{path('app_login')}}">Connexion</a></li>
+								<li><a id="inscription"href="{{path('app_inscription')}}">Inscription</a></li>
+							</ul>
+						</div>
+						<div>
+							<h3>Entraide pour collégien et lycéen : Les Arts-plastiques au top !</h4>
+						</div>
+					</div>
+				</header>
+			{% endif %}
+			{% block logo %}
+				<div class="logo">
+					<img class="logo_creaboost" src="{{ asset('assets/images/images_source/logo_creaboost.svg') }}" alt="logo_creaboost">
+				</div>
+			{% endblock %}
+		{% endblock %}
+		{% block titre %}
+			<div class="titre">
+				<h4>FORUM</h4>
+			</div>
+		{% endblock %}
+		{% block corp %}
+			<div class="corp">
+				<section class="menu">
+					<div class="menu_list">
+						<ul>
+							<li>
+								<a id="sujet" href="{{path('app_forum')}}">Forum</a>
+							</li>
+							<li>
+								<a id="recre" href="{{path('app_recre')}}">La récré</a>
+							</li>
+							<li>
+								Catégorie
+								<ul>
+									<li><a id="categorie"href="{{path('app_forum_collegien')}}">Collégien</a></li>
+									<li><a id="categorie"href="{{path('app_forum_lyceen')}}">Lycéen</a></li>
+
+								</ul>
+							</li>
+							<li>
+								<a id="ressource" href="{{path('app_forum_ressource')}}">Ressource en ligne</a>
+							</li>
+							<li>
+								<a id="membres" href="{{path('app_membres_liste')}}">Membres</a>
+							</li>
+							<li>
+							{% if app.user %}
+								{% if app.user.roles[0] == ('ROLE_ADMIN' or 'ROLE_MODERATEUR') %}
+
+									<a id="membres" href="{{path('admin')}}">Administration</a>
+
+
+								{% elseif app.user.roles[0] == ('ROLE_USER') %}
+								
+								{% endif %}
+								{% endif %}
+
+							</li>
+
+						</ul>
+					</div>
+				</section>
+				{% if app.user %}
+					<aside class="profil">
+						<h4>Vos informations</h4>
+						<h5>{{app.user.pseudo}}</h5>
+						<img style="width: 100px; height: auto;" src="assets/images/avatar/{{app.user.avatar}}">
+						<h5>{{app.user.email}}</h5>
+						<h5>{{app.user.classe}}</h5>
+						<h5>{{app.user.categorie}}</h5>
+						<h5>{{app.user.profil}}</h5>
+						<a id="update" href="{{ path('app_membres_update' , { 'id' : app.user.id })}}">Modifier vos informations</a>
+					</aside>
+				</div>
+			{% endif %}
+		{% endblock %}
+	</body>
+	{# Script pour la mise en place d'un bandeau pour les cookies #}
+	<script type="text/javascript" src="//cookie.eurowebpage.com/cookie.js?skin=cookielaw4"></script>
+</html>

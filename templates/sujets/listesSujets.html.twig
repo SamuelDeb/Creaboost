@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des sujets
+{% endblock %}
+{% block menu %}{% endblock %}
+{% block titre %}
+	<div class="titre">
+		<h4>LISTE DES SUJETS</h4>
+	</div>
+{% endblock %}
+{% block corp %}
+
+<a href="{{path('app_accueil')}}">
+	<h4>Retour à l'accueil</h4>
+</a>
+
+{% for message in app.flashes('success') %}
+	<div class="alert alert-success">
+		{{ message }}
+	</div>
+
+{% endfor %}
+
+
+{# <div class="sub"> #}
+
+	<a href="{{ path('app_nouveau_sujets') }}">
+		<h4>Nouveau Sujet</h4>
+	</a>
+
+	<h1>Sujets Collégien</h1>
+	{% for sujet in sujets %}
+		{% if sujet.categorie == "Collégien" %}
+
+			<div class="sub">
+
+				<div class="card shadow ">
+					<div class="card-header py-3">
+						<h6 class="m-0 font-weight-bold text-primary">
+							titre :
+							{{sujet.titre}}</h6>
+					</div>
+					<div class="card-body">
+						<h5 class="card-title">reponse:{{sujet.reponse}}
+						</h5>
+						<p class="card-text">date:
+							{{sujet.date|date('d-m-Y')}}</p>
+						<a href="{{path('app_afficher_sujets' , { 'id' : sujet.id })}}">Voir les messages</a>
+					</div>
+				</div>
+			</div>
+			</br>
+		{% endif %}
+	{% endfor %}
+{# </div> #}
+
+<h1>Sujets Lycéen</h1>
+{% for sujet in sujets %}
+
+	{% if sujet.categorie == "Lycéen" %}
+		<div class="sub">
+
+			<div class="card shadow ">
+				<div class="card-header py-3">
+					<h6 class="m-0 font-weight-bold text-primary">
+						titre :
+						{{sujet.titre}}</h6>
+				</div>
+				<div class="card-body">
+					<h5 class="card-title">reponse:{{sujet.reponse}}
+					</h5>
+					<p class="card-text">date:
+						{{sujet.date|date('d-m-Y')}}</p>
+					<a href="{{path('app_afficher_sujets' , { 'id' : sujet.id })}}">Voir les messages</a>
+				</div>
+			</div>
+		</div>
+		</br>
+	{% endif %}
+
+
+</div>{% endfor %}{% endblock %}

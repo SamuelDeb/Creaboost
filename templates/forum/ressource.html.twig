@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Forum Lycéen
+{% endblock %}
+
+{% block body %}
+	{% block titre %}
+	<div class="titre">
+				<h4>RESSOURCES</h4>
+			</div>
+			{% endblock %}
+
+		{% block corp %}
+        <div class="listeSujet">
+	<a href="{{path('app_accueil')}}" ><h4>Retour à l'accueil</h4></a>
+    <a href="{{path('app_forum')}}" ><h4>Retour à la liste des sujets</h4></a>
+			<div>
+		{% for ressource in ressource %}
+			{% if ressource.categorie == "Ressource" %}
+
+				<div class="ressource">
+							<h1>Ressources</h1>
+
+							<div class="card shadow ">
+								<div class="card-header py-3">
+									<h6 class="m-0 font-weight-bold text-primary">
+										titre :
+										{{ressource.titre}}</h6>
+                                   
+                                    <p class="card-text">date:
+										{{ressource.date|date('d-m-Y')}}</p>
+								</div>
+								<div class="card-body">
+									<h4 class="card-title">reponse:{{ressource.reponse}}
+									</h4>
+									
+									<a href="{{path('app_afficher_sujets' , { 'id' : ressource.id })}}">Voir les messages</a>
+								</div>
+							</div>
+						</div>
+			{% endif %}
+		{% endfor %}
+        <button>
+			<a href="{{ path('app_nouveau_sujets') }}">Nouveau Sujet</a>
+		</button>
+			{% endblock %}
+	
+{% endblock %}

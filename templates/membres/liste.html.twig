@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier mes informations
+{% endblock %}
+{% block menu %}{% endblock %}
+{% block titre %}
+	<div class="titre">
+		<h4>LISTE DES MEMBRES</h4>
+	</div>
+{% endblock %}
+{% block body %}
+	{% block corp %}
+		<div class="sub">
+			<a href="{{path('app_accueil')}}">
+				<h4>Retour à l'accueil</h4>
+			</a>
+			{% for user in user %}
+
+				<div class="card shadow ">
+					<div class="card-header py-3">
+						<h6 class="m-0 font-weight-bold text-primary">
+							Pseudo :
+							{{user.pseudo}}</h6>
+					</div>
+					<div class="card-body">
+						<h5 class="card-title">Description:
+						</h5>
+						<p class="card-text">{{user.profil}}</p>
+						<p class="card-text">Categorie:
+							{{user.categorie}}</p>
+						<p class="card-text">Classe:
+							{{user.classe}}</p>
+
+					</div>
+				{% endfor %}
+			</div>
+
+		{% endblock %}
+	{% endblock %}

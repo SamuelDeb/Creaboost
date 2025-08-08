@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Forum collegien
+{% endblock %}
+
+{% block body %}
+	{% block titre %}
+		<div class="titre">
+			<h4>LISTE DES SUJETS COLLEGIEN</h4>
+		</div>
+	{% endblock %}
+	{% block corp %}
+
+		<div class="listeSujet">
+			<a href="{{path('app_accueil')}}">
+				<h4>Retour à l'accueil</h4>
+			</a>
+			<div>
+				<a href="{{ path('app_nouveau_sujets') }}">
+					<h4>Nouveau Sujet</h4>
+				</a>
+							<h1>Sujets Collégien</h1>
+
+				{% for collegien in collegien %}
+					{% if collegien.categorie == "Collégien" %}
+
+						<div class="collegien">
+
+							<div class="card shadow ">
+								<div class="card-header py-3">
+									<h6 class="m-0 font-weight-bold text-primary">
+										titre :
+										{{collegien.titre}}</h6>
+								</div>
+								<div class="card-body">
+									<h5 class="card-title">reponse:{{collegien.reponse}}
+									</h5>
+									<p class="card-text">date:
+										{{collegien.date|date('d-m-Y')}}</p>
+									<a href="{{path('app_afficher_sujets' , { 'id' : collegien.id })}}">Voir les messages</a>
+								</div>
+							</div>
+						</div>
+						</br>
+					{% endif %}
+				{% endfor %}
+				{# <button>
+					<a href="{{ path('app_nouveau_sujets') }}">Nouveau Sujet</a>
+				</button> #}
+		</div>
+			{% endblock %}
+		{% endblock %}

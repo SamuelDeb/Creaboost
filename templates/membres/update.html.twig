@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier mes informations
+{% endblock %}
+{% block menu %}{% endblock %}
+	{% block titre %}
+	<div class="titre">
+				<h4>MODIFIER VOS INFORMATIONS</h4>
+			</div>
+			{% endblock %}
+{% block body %}
+	{% block corp %}
+		<div class="sub">
+			
+				<a href="{{path('app_accueil')}}"><h4>Retour à l'accueil</h4></a>
+			
+			<div>
+				<h1>Modifier vos informations</h1>
+				<div>
+					<div class="form">
+						{{ form_start(form) }}
+                <h4 class=" mb-3 font-weight-normal">Email</h4>
+
+						{{ form_row(form.email, {'attr': {'class': 'form-control'}}) }}
+					</div>
+					<div class="form">
+                <h4 class=" mb-3 font-weight-normal">Avatar</h4>
+
+						{{ form_row(form.avatar, {'attr': {'class': 'form-control'}}) }}
+					</div>
+					<div class="form">
+                <h4 class=" mb-3 font-weight-normal">Catégorie</h4>
+
+						{{ form_row(form.categorie, {'attr': {'class': 'form-control'}}) }}
+					</div>
+					<div class="form">
+                <h4 class=" mb-3 font-weight-normal">Description</h4>
+
+						{{ form_row(form.profil, {'attr': {'class': 'form-control'}}) }}
+					</div>
+					{{ form_end(form) }}
+
+				</div>
+			</div>
+		{% endblock %}
+	{% endblock %}
