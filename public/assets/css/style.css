@@ -1,0 +1,157 @@
+body {
+    background: linear-gradient(90deg, #000000 0%, #F36D51 100%);
+    text-align: center;
+}
+
+.header {
+    padding-right: 25%;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Comic Neue', cursive;
+    color: #FF7355;
+    font-weight: 700;
+    text-align: left;
+    align-items: center;
+    text-shadow: #262BF6 1px 1px;
+    font-size: 25px;
+}
+
+.logo {
+    position: absolute;
+    top: 0;
+    margin-top: -120px;
+    margin-left: 50px;
+    width: 15%;
+    height: 15%;
+}
+
+.login_inscription {
+    z-index: 5;
+
+}
+.listeSujet{
+    width: 50%;
+    height: auto;
+    display: block;
+    justify-content: space-between;
+    margin-left: 25%;
+}
+
+
+#logout, #login, #inscription, #sujet, #recre, #categorie, #ressource, #membres, #update,li {
+    color: #FF7355;
+    text-shadow: #262BF6 1px 1px;
+
+}
+
+h1, h4,.bouton {
+    font-family: 'Comic Neue';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 46px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: right;
+
+    color: #FF7355;
+
+    text-shadow: #262BF6 1px 1px;
+
+}
+
+.bouton{
+margin-left: 40%;
+}
+h5 {
+    font-family: 'Comic Neue';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 46px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: right;
+
+    color: #a53117;
+
+    text-shadow: #262BF6 1px 1px;
+
+}
+
+.sub,.login {
+    width: 50%;
+    height: auto;
+    margin-left: 25%;
+}
+
+.titre {
+    border-width: 1px;
+    border-color: #000000;
+    font-family: 'Comic Neue', cursive;
+    color: #FF7355;
+    font-weight: 700;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    line-height: 51px;
+    font-size: 40px;
+    background: linear-gradient(90deg, #FF7355 0%, #000000 100%);
+}
+
+.corp{
+    display: flex;
+    font-family: 'Comic Neue', cursive;
+    font-size: 40px;
+    line-height: 51px;
+    text-align: center;
+    justify-content: space-between;
+    color: #ff7355;
+    margin-top: 200px;
+
+}
+
+.menu {
+    border-width: 1px;
+    display: flex;
+    border-width: 1px;
+    border-color: #000000;
+
+}
+
+.menu_list {
+    display: flex;
+    font-family: 'Comic Neue', cursive;
+    color: #FF7355;
+    text-align: left;
+    font-size: 30px;
+    line-height: 51px;
+
+
+}
+
+ul {
+    list-style-type: none;
+}
+
+.contenu {
+    border: solid 2px, #FFBEB2;
+    width: 50%;
+    height: auto;
+    margin-left: 25%;
+    margin-top: -200px;
+}
+
+.profil {
+    background: #FFBEB2;
+    border: 15px solid #FFBEB2;
+    border-radius: 76px;
+
+}
+
+.profil>a {
+    font-size: 25px;
+}
+
